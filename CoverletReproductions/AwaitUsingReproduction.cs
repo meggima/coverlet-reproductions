@@ -2,13 +2,12 @@
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoverletReproductions
+namespace CoverletReproductions;
+
+public class AwaitUsingReproduction
 {
-    public class AwaitUsingReproduction
+    public async Task Execute()
     {
-        public async Task Execute()
-        {
-            await using var stream = new MemoryStream(Encoding.UTF8.GetBytes("Hello world!"));
-        }
+        await using var stream = new MemoryStream(Encoding.UTF8.GetBytes("Hello world!"));
     }
 }
