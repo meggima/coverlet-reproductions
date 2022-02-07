@@ -1,29 +1,28 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CoverletReproductions
+namespace CoverletReproductions;
+
+public class AwaitForeachReproduction
 {
-    public class AwaitForeachReproduction
+    public async Task<int> Execute()
     {
-        public async Task<int> Execute()
+        int sum = 0;
+
+        await foreach (int result in AsyncEnumerable())
         {
-            int sum = 0;
-
-            await foreach (int result in AsyncEnumerable())
-            {
-                sum += result;
-            }
-
-            return sum;
+            sum += result;
         }
 
-        private async IAsyncEnumerable<int> AsyncEnumerable()
+        return sum;
+    }
+
+    private async IAsyncEnumerable<int> AsyncEnumerable()
+    {
+        for (int i = 0; i < 100; i++)
         {
-            for(int i = 0; i < 100; i++)
-            {
-                await Task.Delay(10);
-                yield return i;
-            }
+            await Task.Delay(10);
+            yield return i;
         }
     }
 }

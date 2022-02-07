@@ -1,21 +1,20 @@
 ﻿using System.Threading.Tasks;
 using Xunit;
 
-namespace CoverletReproductions.Test
+namespace CoverletReproductions.Test;
+
+public class AwaitUsingReproductionFixture
 {
-    public class AwaitUsingReproductionFixture
+    [Fact]
+    public async Task Execute_ShouldWork()
     {
-        [Fact]
-        public async Task Execute_ShouldWork()
-        {
-            // Arrange
-            var sut = new AwaitUsingReproduction();
+        // Arrange
+        var sut = new AwaitUsingReproduction();
 
-            // Act
-            await sut.Execute();
+        // Act
+        await sut.Execute();
 
-            // Assert
-            // No assert
-        }
+        // Assert
+        // No assert
     }
 }
